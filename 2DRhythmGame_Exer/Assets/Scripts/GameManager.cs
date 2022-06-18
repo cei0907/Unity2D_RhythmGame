@@ -12,6 +12,14 @@ public class GameManager : MonoBehaviour
         else if (instance != this) Destroy(gameObject);
     }
 
+    /**
+     * BAD 1
+     * GOODS 2
+     * 
+     */
+    public enum judges { NONE=0, BAD, GOOD, PERFECT, MISS };
+
+
     public float noteSpeed;
     // Start is called before the first frame update
     void Start()

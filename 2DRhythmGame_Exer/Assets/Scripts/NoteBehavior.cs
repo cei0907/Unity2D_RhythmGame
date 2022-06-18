@@ -5,16 +5,54 @@ using UnityEngine;
 public class NoteBehavior : MonoBehaviour
 {
     public int noteType;
+    private GameManager.judges judge;
+    private KeyCode keyCode;
     //public float speed;
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (noteType == 1) keyCode = KeyCode.D;
+        else if (noteType == 2) keyCode = KeyCode.F;
+        else if (noteType == 3) keyCode = KeyCode.J;
+        else if (noteType == 4) keyCode = KeyCode.K;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector2.down * GameManager.instance.noteSpeed);
+        transform.Translate(Vector3.down * GameManager.instance.noteSpeed);
+        //사용자가 노트 키를 입력한 경우
+        if (Input.GetKey(keyCode))
+        {
+            Debug.Log(judge);
+            if(judge != GameManager.judges.NONE)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Bad Line")
+        {
+            judge = GameManager.judges.BAD;
+        }
+        else if (other.gameObject.tag == "Good Line")
+        {
+            judge = GameManager.judges.GOOD;
+
+        }
+        else if (other.gameObject.tag == "Perfect Line")
+        {
+            judge = GameManager.judges.PERFECT;
+
+        }
+        else if (other.gameObject.tag == "Miss Line")
+        {
+            judge = GameManager.judges.MISS;
+        }
+        //Debug.Log(judge);
+
     }
 }
