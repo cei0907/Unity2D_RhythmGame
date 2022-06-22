@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\BackgroundBehavior.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\NoteBehavior.cs" />
+    <Compile Include="Assets\Scripts\NoteController.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/2019.3.13f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
