@@ -6,6 +6,7 @@ public class NoteBehavior : MonoBehaviour
 {
     public int noteType;
     private GameManager.judges judge;
+
     private KeyCode keyCode;
     //public float speed;
     // Start is called before the first frame update
@@ -24,7 +25,7 @@ public class NoteBehavior : MonoBehaviour
         //사용자가 노트 키를 입력한 경우
         if (Input.GetKey(keyCode))
         {
-            Debug.Log(judge);
+            GameManager.instance.processJudge(judge, noteType);
             if(judge != GameManager.judges.NONE)
             {
                 gameObject.SetActive(false);
@@ -55,6 +56,7 @@ public class NoteBehavior : MonoBehaviour
         else if (other.gameObject.tag == "Miss Line")
         {
             judge = GameManager.judges.MISS;
+            GameManager.instance.processJudge(judge, noteType);
             gameObject.SetActive(false);
         }
         //Debug.Log(judge);
