@@ -27,11 +27,15 @@ public class NoteBehavior : MonoBehaviour
             Debug.Log(judge);
             if(judge != GameManager.judges.NONE)
             {
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
         }
     }
 
+    public void Initialize()
+    {
+        judge = GameManager.judges.NONE;
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Bad Line")
@@ -51,6 +55,7 @@ public class NoteBehavior : MonoBehaviour
         else if (other.gameObject.tag == "Miss Line")
         {
             judge = GameManager.judges.MISS;
+            gameObject.SetActive(false);
         }
         //Debug.Log(judge);
 
