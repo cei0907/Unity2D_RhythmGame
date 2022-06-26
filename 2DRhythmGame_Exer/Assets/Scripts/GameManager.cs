@@ -30,6 +30,9 @@ public class GameManager : MonoBehaviour
 
     public GameObject[] trails;
     private SpriteRenderer[] trailSpriteRenderers;
+
+    private AudioSource audioSource;
+    private string music = "Drops of H20";
  
     private void Awake()
     {
@@ -42,6 +45,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Invoke("MusicStart", 2);//일종의 콜백함수일까? 시작후 2초후에 음악이 재생되도록
         judgementSpriteRenderer = judgeUI.GetComponent<Image>();
         judgementSpriteAnimator = judgeUI.GetComponent<Animator>();
 
@@ -153,5 +157,14 @@ public class GameManager : MonoBehaviour
 
         }//end of else
         showJudgement();
+    }
+
+    void MusicStart()
+    {
+        AudioClip audioClip =   Resources.Load<AudioClip>("Beats/" + music);
+        audioSource         =   GetComponent<AudioSource>();
+        audioSource.clip    =   audioClip;
+        audioSource.Play();
+
     }
 }
