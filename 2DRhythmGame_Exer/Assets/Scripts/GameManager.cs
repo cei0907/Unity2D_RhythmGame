@@ -31,8 +31,9 @@ public class GameManager : MonoBehaviour
     public GameObject[] trails;
     private SpriteRenderer[] trailSpriteRenderers;
 
+    //음악변수
     private AudioSource audioSource;
-    private string music = "Drops of H20";
+    public string music = "1";
  
     private void Awake()
     {
