@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
     public GameObject[] trails;
     private SpriteRenderer[] trailSpriteRenderers;
 
+    public bool autoPerfect;
+
     //음악변수
     private AudioSource audioSource;
     public string music = "1";
